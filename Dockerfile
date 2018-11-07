@@ -1,13 +1,13 @@
 
 # We use npm for dependency management
-FROM node:alpine as dependencies-solver
+FROM ppc64le/node:alpine as dependencies-solver
 RUN apk add --no-cache git
 COPY package*.json /bats/
 WORKDIR /bats
 RUN npm install
 
 # Minimalistic image
-FROM alpine:3.7
+FROM ppc64le/alpine:3.7
 LABEL Maintainer="Damien DUPORTAL <damien.duportal@gmail.com>"
 ENV BATS_HELPERS_DIR=/opt/bats-helpers
 
